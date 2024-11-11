@@ -22,7 +22,10 @@ app.use((req, res) => {
 
 app.use((err, req, res, next) => {
   console.log(err.name)
-  if(err.name === 'CastError'){
+  if(err.name === 'ValidationError'){
+    return res.status(400).json({ message: err.message })
+  }
+  if(err.name === 'BodyData'){
     return res.status(400).json({ message: err.message })
   }
   res.status(500).json({ message: err.message })

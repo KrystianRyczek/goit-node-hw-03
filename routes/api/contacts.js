@@ -1,5 +1,5 @@
 const express = require('express')
-const contacts = require('../../models/contacts.js')
+const contacts = require('../../controllers/contacts/contacts.js')
 const router = express.Router()
 
 
@@ -11,6 +11,8 @@ router.get('/:contactId', contacts.getContactById)
 router.post('/', contacts.addContact)
 
 router.put('/:contactId', contacts.updateContact)
+
+router.patch('/:contactId/favorite', contacts.updateContactFavorite)
 
 router.delete('/:contactId', contacts.removeContact)
 
